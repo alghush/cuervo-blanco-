@@ -19,8 +19,7 @@ const FERIADOS = [
 ];
 
 // ── CONFIGURACIÓN POR TURNO ──────────────────
-// mostrarPrincipal: true  → se ve cuervolog2 / se oculta cuervocafe
-// mostrarPrincipal: false → se oculta cuervolog2 / se ve cuervocafe
+
 const ASSETS = {
   manana:    { mostrarPrincipal: false, video: "video-cafe"     }, // 06:00 – 11:59
   ejecutivo: { mostrarPrincipal: true,  video: "video-mediodia" }, // 12:00 – 15:59 L-J
@@ -78,6 +77,22 @@ function getTurno() {
   // Noche: 20:00 – cierre (y madrugada hasta las 6)
   return "cena";
 }
+
+// ── ACORDEONES: abrir y cerrar 
+document.addEventListener("DOMContentLoaded", () => {
+  const toggles = document.querySelectorAll(".checkbox__submenu");
+  
+  toggles.forEach(toggle => {
+    toggle.addEventListener("change", () => {
+      if (toggle.checked) {
+        // Cerrar todos los otros
+        toggles.forEach(otro => {
+          if (otro !== toggle) otro.checked = false;
+        });
+      }
+    });
+  });
+});
 
 // ── APLICAR TURNO ────────────────────────────
 function aplicarTurno() {
