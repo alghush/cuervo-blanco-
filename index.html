@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="img/logota.png">
+    
+    <title>CUERVO BLANCO</title>
+</head>
+<body>
+
+    <!-- El video que queda de fondo para siempre -->
+<!-- Video mañana/tarde -->
+<video id="video-cafe" autoplay muted loop playsinline class="video-background">
+    <source src="/video/cuervocafe.mp4" type="video/mp4">
+</video>
+
+<!-- Video mediodía -->
+<video id="video-mediodia" autoplay muted loop playsinline class="video-background">
+    <source src="/video/cuervo mediodia.mp4" type="video/mp4">
+</video>
+
+<!-- Video cena/noche -->
+<video id="video-cena" autoplay muted loop playsinline class="video-background">
+    <source src="/video/cuervo cena.mp4" type="video/mp4">
+</video>
+
+<!-- Overlay oscuro -->
+<div class="video-overlay"></div>
+
+<main class="content-wrapper">
+    <section class="splash">
+
+<!-- logo principal mediodia 12 a 15:59 y noche apartir 20  -->
+<div class="splash__logo">
+    <img id="logo-principal" src="/img/cuervolog2.jpg" alt="Logo cuervo blanco">
+</div>
+
+<!-- logo cafe mañana 7:30 a 11:59 y 16:00 a 19:59 -->
+<div class="splash__logo">
+    <img id="logo-cafe" src="/img/cuervocafe.jpg" alt="Logo cuervo cafe">
+</div>
+
+        
+        <p class="splash__sub">nacido para llevar el sabor de las pastas artesanales a cada hogar</p>
+        <div class="scroll-arrow">↓</div>
+        <div class="splash__btns">
+
+
+            <!-- ti-tools-kitchen-2 -->
+        <!-- VER PRODUCTOS  -->
+            <input type="checkbox" id="toggle-productos" class="checkbox__submenu">
+                <label class="splash__btn splash__btn--menu" for="toggle-productos">
+                <span class="splash__btn-left">
+                <span class="splash__btn-icon"><i class="ti ti-notebook"></i></span>
+                CARTA
+                </span>
+                <i class="ti ti-chevron-down splash__arrow"></i>
+                </label>
+
+            <div class="splash__acordeon-inner">
+                <div class="splash__acordeon-wrap">
+                    <a class="splash__acordeon-item" href="/page/pastas.html">
+                        <i class="ti ti-coffee"></i> Cuevo Cafe
+                    </a>
+                    <a class="splash__acordeon-item" href="/page/congelados.html">
+                        <i class="ti ti-bowl-spoon"></i> Menu ejecutivo
+                    </a>
+                    <a class="splash__acordeon-item" href="/page/bebidas.html">
+                        <i class="ti ti-tools-kitchen-2"></i> Carta de comida 
+                    </a>
+                    <a class="splash__acordeon-item" href="/page/almacen.html">
+                        <i class="ti ti-glass-full"></i> Carta de bebidas
+                    </a>
+                </div>
+            </div>
+<!-- REDES -->
+<input type="checkbox" id="toggle-redes" class="checkbox__submenu">
+    <label class="splash__btn splash__btn--menu" for="toggle-redes">
+    <span class="splash__btn-left">
+        <span class="splash__btn-icon"><i class="ti ti-brand-instagram"></i></span>
+        REDES
+    </span>
+    <i class="ti ti-chevron-down splash__arrow"></i>
+    </label>
+
+<div class="splash__acordeon-inner">
+    <div class="splash__acordeon-wrap">
+        <a class="splash__acordeon-item" href="https://instagram.com/cuervocafe" target="_blank">
+            <i class="ti ti-brand-instagram"></i> Cuervo Café
+        </a>
+        <a class="splash__acordeon-item" href="https://instagram.com/cuervoblanco" target="_blank">
+            <i class="ti ti-brand-instagram"></i> Cuervo Blanco
+        </a>
+
+    </div>
+</div>
+
+
+            <!-- RESERVAS -->
+<a class="splash__btn splash__btn--ins" href="https://wa.me/54TUNUMERO">
+    <span class="splash__btn-icon"><i class="ti ti-calendar"></i></span>
+    Reservas
+</a>
+
+            <!-- UBICACION -->
+            <a class="splash__btn splash__btn--ubi"
+                href="https://www.google.com/maps/place/Cuervo+Blanco/@-32.9230564,-60.6633547,17z/data=!4m6!3m5!1s0x95b65519cb738cd1:0xb361e1ab4a3aae22!8m2!3d-32.9230564!4d-60.6633547!16s%2Fg%2F11gxhnbcmd?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D">
+                <span class="splash__btn-icon"><i class="ti ti-map-pin"></i></span>
+                Av. Carballo 158 004, S2000 Rosario, Santa Fe
+            </a>
+
+        </div>
+
+        <a class="splash__skip" href="/page/home.html">Entrar a la página →</a>
+
+    </section>
+</main>
+<script src="/js/script.js"></script>
+</body>
+</html>
