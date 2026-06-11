@@ -50,7 +50,8 @@ function horaDecimal(d) {
 
 // ── DETECTAR TURNO ACTUAL ────────────────────
 function getTurno() {
-    
+
+
   const ahora    = new Date();
   const hora     = horaDecimal(ahora);
   const diaSemana = ahora.getDay(); // 0=Dom, 1=Lun … 6=Sab
@@ -77,7 +78,12 @@ function getTurno() {
 
   // Noche: 20:00 – cierre (y madrugada hasta las 6)
   return "cena";
+
+
+
 }
+
+
 
 // ── ACORDEONES: abrir y cerrar 
 document.addEventListener("DOMContentLoaded", () => {
@@ -120,6 +126,12 @@ function aplicarTurno() {
   const divCafe      = document.getElementById("logo-cafe")?.closest(".splash__logo");
   if (divPrincipal) divPrincipal.style.display = assets.mostrarPrincipal ? "block" : "none";
   if (divCafe)      divCafe.style.display      = assets.mostrarPrincipal ? "none"  : "block";
+
+  // Logo del nav (home.html)
+const logoNavPrincipal = document.getElementById("logo-nav-principal");
+const logoNavCafe      = document.getElementById("logo-nav-cafe");
+if (logoNavPrincipal) logoNavPrincipal.style.display = assets.mostrarPrincipal ? "block" : "none";
+if (logoNavCafe)      logoNavCafe.style.display      = assets.mostrarPrincipal ? "none"  : "block";
 
   // 3. Íconos del acordeón
   const items = document.querySelectorAll(".splash__acordeon-item");

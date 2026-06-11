@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="icon" href="../img/icono.ico" type="king ber">
+    <title>Cuervo blanco</title>
+</head>
+<body>
+
+    <!-- El video que queda de fondo para siempre -->
+<!-- Video mañana/tarde -->
+<video id="video-cafe" autoplay muted loop playsinline class="video-background">
+    <source src="../video/cuervocafe.mp4" type="video/mp4">
+</video>
+
+<!-- Video mediodía -->
+<video id="video-mediodia" autoplay muted loop playsinline class="video-background">
+    <source src="../video/cuervo-mediodia.mp4" type="video/mp4">
+</video>
+
+<!-- Video cena/noche -->
+<video id="video-cena" autoplay muted loop playsinline class="video-background">
+    <source src="../video/cuervo-cena.mp4" type="video/mp4">
+</video>
+
+<!-- Overlay oscuro -->
+<div class="video-overlay"></div>
+
+<!-- HEADER -->
+<header class="header">
+    <img id="logo-nav-principal" src="../img/cuervo2.png" alt="Logo cuervo blanco" class="main-logo">
+    <img id="logo-nav-cafe" src="../img/cuervocafe2.png" alt="Logo cuervo cafe" class="main-logo">
+    
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <nav class="nav">
+        <ul class="nav-list">
+            <li><a href="/index.html">INICIO</a></li>
+            
+            <!-- CARTA DROPDOWN -->
+            <li class="nav-dropdown">
+                <input type="checkbox" id="toggle-carta-nav" class="menu-toggle">
+                <label for="toggle-carta-nav" class="nav-dropdown__label">
+                    CARTA <i class="ti ti-chevron-down"></i>
+                </label>
+                <ul class="nav-dropdown__menu">
+                    <li><a href="/page/cafe.html"><i class="ti ti-coffee"></i> Cuervo Café</a></li>
+                    <li><a href="/page/ejecutivo.html"><i class="ti ti-bowl-spoon"></i> Menú Ejecutivo</a></li>
+                    <li><a href="/page/comida.html"><i class="ti ti-tools-kitchen-2"></i> Carta de Comida</a></li>
+                    <li><a href="/page/bebidas.html"><i class="ti ti-glass-full"></i> Tragos y Cervezas</a></li>
+                </ul>
+            </li>
+
+            <li><a href="/page/eventos.html">EVENTOS</a></li>
+            <li><a href="/page/cv.html">ENVIÁ TU CV</a></li>
+        </ul>
+    </nav>
+    <div class="header-right">
+        <label for="menu-toggle" class="menu-icon">☰</label>
+        <a href="/page/reservas.html" class="nav-reserva">RESERVAR</a>
+    </div>
+</header>
+
+<main class="main-ush">
+
+</main>
+
+<script src="/js/script.js"></script>
+</body>
+</html>
