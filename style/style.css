@@ -27,7 +27,7 @@ body {
     --color-secundary: #a5a5a5;
 
     --color-primary: #22391789;
-    --color-gold-light: #7a7a7a;
+    --color-hover:#223917f7;
     --color-text: #fff;
 
     --color-fondo-productos: #2a0a0a;
@@ -360,14 +360,14 @@ body {
     display: none;
 }
 
-#toggle-productos ~ .splash__acordeon-inner {
+#toggle-productos ~ .splash__acordeon-inner:first-of-type {
     display: grid;
     grid-template-rows: 0fr;
     opacity: 0;
     transition: grid-template-rows 0.4s ease, opacity 0.35s ease;
 }
 
-#toggle-productos:checked ~ .splash__acordeon-inner {
+#toggle-productos:checked ~ .splash__acordeon-inner:first-of-type {
     grid-template-rows: 1fr;
     opacity: 1;
 }

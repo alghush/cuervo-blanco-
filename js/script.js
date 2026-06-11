@@ -50,6 +50,7 @@ function horaDecimal(d) {
 
 // ── DETECTAR TURNO ACTUAL ────────────────────
 function getTurno() {
+    
   const ahora    = new Date();
   const hora     = horaDecimal(ahora);
   const diaSemana = ahora.getDay(); // 0=Dom, 1=Lun … 6=Sab
@@ -143,6 +144,50 @@ const mapaItem = {
 if (items[mapaItem[turno]]) {
     items[mapaItem[turno]].classList.add("activo");
 }
+
+// 5. Paleta de colores según turno
+const PALETAS = {
+  manana: {
+    '--color-principal':  '#0d1a0a',
+    '--color-traslucer':  '#1e2e1a86',
+    '--color-primary':    '#22391789',
+    '--color-secundary':  '#8aab7a',
+    '--color-hover':      '#4a6741',
+  },
+  tarde: {
+    '--color-principal':  '#0d1a0a',
+    '--color-traslucer':  '#1e2e1a86',
+    '--color-primary':    '#22391789',
+    '--color-secundary':  '#8aab7a',
+    '--color-hover':      '#4a6741',
+  },
+  ejecutivo: {
+    '--color-principal':  '#050000',
+    '--color-traslucer':  '#2e2d2d86',
+    '--color-primary':    '#22391789',
+    '--color-secundary':  '#a5a5a5',
+    '--color-hover':      '#f00',
+  },
+  carta: {
+    '--color-principal':  '#050000',
+    '--color-traslucer':  '#2e2d2d86',
+    '--color-primary':    '#22391789',
+    '--color-secundary':  '#a5a5a5',
+    '--color-hover':      '#f00',
+  },
+  cena: {
+    '--color-principal':  '#050000',
+    '--color-traslucer':  '#2e2d2d86',
+    '--color-primary':    '#22391789',
+    '--color-secundary':  '#a5a5a5',
+    '--color-hover':      '#f00',
+  },
+};
+
+const paleta = PALETAS[turno];
+Object.entries(paleta).forEach(([variable, valor]) => {
+  document.documentElement.style.setProperty(variable, valor);
+});
 
   // 5. Log en consola (útil para desarrollo)
   console.log(`[Cuervo Blanco] Turno activo: ${turno} | ${new Date().toLocaleTimeString("es-AR")}`);
