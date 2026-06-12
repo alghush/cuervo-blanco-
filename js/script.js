@@ -178,21 +178,21 @@ const PALETAS = {
     '--color-traslucer':  '#2e2d2d86',
     '--color-primary':    '#22391789',
     '--color-secundary':  '#a5a5a5',
-    '--color-hover':      '#f00',
+    '--color-hover':      'rgb(193, 199, 199)',
   },
   carta: {
     '--color-principal':  '#050000',
     '--color-traslucer':  '#2e2d2d86',
     '--color-primary':    '#22391789',
     '--color-secundary':  '#a5a5a5',
-    '--color-hover':      '#f00',
+    '--color-hover':      'rgb(138, 136, 136)',
   },
   cena: {
     '--color-principal':  '#050000',
     '--color-traslucer':  '#2e2d2d86',
     '--color-primary':    '#22391789',
     '--color-secundary':  '#a5a5a5',
-    '--color-hover':      '#f00',
+    '--color-hover':      'rgb(139, 137, 137)',
   },
 };
 

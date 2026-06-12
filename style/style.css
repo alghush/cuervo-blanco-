@@ -641,20 +641,21 @@ body {
     .nav {
         display: none;
         position: absolute;
-        top:60px;
-        left: 0;
-        width: 100%;
-        background: var(--color-surface);
-        border-radius: 0 0 12px 12px;
-        border-top: 1px solid var(--color-border);
+        top: 60px;
+        right: 0;      
+        left: auto;      
+        width: 220px;    
+        background: #050000f7;
+        border-radius: 12px;
+        border: 1px solid var(--color-border);
         padding: 5px 0;
-        
-        }
+        box-shadow: 0 8px 25px #00000066;
+    }
 
     .nav-list {
         flex-direction: column;
-        gap:0;
-        padding:10px 0;
+        gap: 0;
+        padding: 10px 0;
     }
 
     .nav-list a {
@@ -671,7 +672,24 @@ body {
 
     .menu-toggle:checked ~ .nav {
         display: block;
-        width: 100%;
+        width: 220px;
+    }
+
+    /* DROPDOWN CARTA en móvil — se expande inline, no flotante */
+    .nav-dropdown {
+        position: static;
+    }
+
+    .nav-dropdown__menu {
+        position: static;       /* ← ya no es flotante */
+        transform: none;
+        left: auto;
+        min-width: 100%;
+        border-radius: 8px;
+        margin: 0 10px;
+        box-shadow: none;
+        border: none;
+        background: rgba(255,255,255,0.05);
     }
 
     .nav-reserva {
@@ -682,5 +700,188 @@ body {
         display: flex;
         align-items: center;
         gap: 10px;
-    }   
+    }
+}
+
+
+/*--- SUBMENU CATEGORIAS CARRUSEL ---*/
+
+.categorias-wrapper {
+    position:sticky;
+    top: 120px;
+    bottom: auto;
+    width: 65%;
+    max-width: 800px;
+    margin: 30px auto 20px;
+    z-index:100;
+    background: var(--color-traslucer);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-color);
+    border-radius: 16px;
+    padding: 10px;
+}
+
+.categorias-carrusel {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; 
+}
+
+
+.caterorias-carrusel::-webkit-scrollbar {
+    display: none; 
+}
+
+.categoria-card {
+    flex:0 0 auto;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid var(--color-border);
+    background: var(--color-secundary);
+    text-decoration: none;
+    color: var(--color-text);
+    transition: all 0.25s ease;
+    min-width: 80px;
+}
+
+.categoria-card i {
+    font-size: 20px;
+    color: var(--color-primary);
+}
+
+.categoria-card span {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.categoria-card:hover, .categoria-card:active {
+    background: var(--color-secundary);
+    border-color: var(--color-primary);
+    color: #000;
+}
+
+.categoria-card.active i, .categoria-card:hover i {
+    color: #000;
+}
+
+
+/*---- CARTA SECTION ----*/
+
+
+.logo-section {
+    display: flex;
+    justify-content: center;
+}
+
+.logo-section img {
+    width: 100px;
+    height: 100px;
+}
+
+.carta {
+    min-height: 200vh;
+    padding-top: 5px;
+    backdrop-filter: blur(10px);
+    max-width: 700px;
+    margin: 200px auto;
+    position: relative;
+    z-index: 1;
+    border-radius: 20px;
+    border:1.5px solid var(--color-hover);
+}
+
+.carta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.carta-box {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1.5px solid var(--color-secundary);
+    border-radius: 16px;
+    padding: 1.2rem;
+    margin: 10px;
+}
+
+.carta-box h2 {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--color-hover);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-hover);
+}
+
+.carta-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    gap: 10px;
+}
+
+.carta-item:last-child {
+    border-bottom: none;
+}
+
+.item-nombre {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-blanco);
+}
+
+.item-precio {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-secundary);
+    white-space: nowrap;
+}
+
+.carta-box--full {
+    margin-bottom: 1rem;
+}
+
+.carta-subtitle {
+    font-size: 0.6rem;
+    font-weight: 400;
+    opacity: 0.7;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-left: 8px;
+}
+
+.carta-grid-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 1rem;
+}
+
+@media (max-width: 768px) {
+    .carta-grid-inner {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .carta-grid {
+        grid-template-columns: 1fr;
+    }
 }
