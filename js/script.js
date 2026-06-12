@@ -34,7 +34,7 @@ const ICONOS = {
   ejecutivo: { cafe: "ti-coffee",          ejecutivo: "ti-bowl-spoon",  carta: "ti-tools-kitchen-2", bebidas: "ti-glass-full" },
   carta:     { cafe: "ti-coffee",          ejecutivo: "ti-bowl-spoon",  carta: "ti-tools-kitchen-2", bebidas: "ti-glass-full" },
   tarde:     { cafe: "ti-coffee",          ejecutivo: "ti-bowl-spoon",  carta: "ti-tools-kitchen-2", bebidas: "ti-glass-full" },
-  cena:      { cafe: "ti-moon",            ejecutivo: "ti-bowl-spoon",  carta: "ti-notebook",        bebidas: "ti-martini"    },
+  cena:      { cafe: "ti-coffee",            ejecutivo: "ti-bowl-spoon",  carta: "ti-notebook",        bebidas: "ti-martini"    },
 };
 
 // ── HELPER: fecha como string "YYYY-MM-DD" ──
