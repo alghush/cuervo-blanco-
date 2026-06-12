@@ -842,9 +842,13 @@ body {
     border-bottom: none;
 }
 
-.item-nombre {
+.item-nombre  {
     font-size: 1rem;
     font-weight: 500;
+    color: var(--color-blanco);
+}
+
+.item-desc {
     color: var(--color-blanco);
 }
 
