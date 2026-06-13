@@ -33,7 +33,7 @@ const ICONOS = {
   ejecutivo: { cafe: "ti-coffee", ejecutivo: "ti-bowl-spoon", carta: "ti-tools-kitchen-2", bebidas: "ti-glass-full" },
   carta:     { cafe: "ti-coffee", ejecutivo: "ti-bowl-spoon", carta: "ti-tools-kitchen-2", bebidas: "ti-glass-full" },
   tarde:     { cafe: "ti-coffee", ejecutivo: "ti-bowl-spoon", carta: "ti-tools-kitchen-2", bebidas: "ti-glass-full" },
-  cena:      { cafe: "ti-moon",   ejecutivo: "ti-bowl-spoon", carta: "ti-notebook",        bebidas: "ti-martini"    },
+  cena:      { cafe: "ti-coffee", ejecutivo: "ti-bowl-spoon", carta: "ti-notebook",        bebidas: "ti-glass-full"    },
 };
 
 // ── PALETA DE COLORES POR TURNO ──────────────
@@ -96,15 +96,26 @@ function horaDecimal(d) {
 
 // ── DETECTAR TURNO ACTUAL ────────────────────
 function getTurno() {
-  const ahora       = new Date();
-  const hora        = horaDecimal(ahora);
-  const diaSemana   = ahora.getDay();
-  const esFeriado   = FERIADOS.includes(fechaStr(ahora));
-  const esFinDeSemana = diaSemana === 0 || diaSemana === 5 || diaSemana === 6;
+  const ahora         = new Date();
+  const hora          = horaDecimal(ahora);
+  const diaSemana     = ahora.getDay();
+  const esFeriado     = FERIADOS.includes(fechaStr(ahora));
+  const esFinDeSemana = diaSemana === 0 || diaSemana === 6; // Dom/Sab
+  const esViernes     = diaSemana === 5;
 
-  if (hora >= 6  && hora < 12) return "manana";
-  if (hora >= 12 && hora < 16) return (esFinDeSemana || esFeriado) ? "carta" : "ejecutivo";
+  // Mañana: 06:00 – 11:59
+  if (hora >= 6 && hora < 12) return "manana";
+
+  // Almuerzo: 12:00 – 15:59
+  if (hora >= 12 && hora < 16) {
+    if (esFinDeSemana || esViernes || esFeriado) return "carta";
+    return "ejecutivo"; // L-J
+  }
+
+  // Tarde: 16:00 – 19:59 → siempre café
   if (hora >= 16 && hora < 20) return "tarde";
+
+  // Noche: 20:00+ → siempre carta de comida
   return "cena";
 }
 
