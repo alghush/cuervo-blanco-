@@ -20,11 +20,11 @@ const FERIADOS = [
 
 // ── CONFIGURACIÓN POR TURNO ──────────────────
 const ASSETS = {
-  manana:    { mostrarPrincipal: false, video: "video-cafe"     }, // 06:00 – 11:59
-  ejecutivo: { mostrarPrincipal: true,  video: "video-mediodia" }, // 12:00 – 15:59 L-J
-  carta:     { mostrarPrincipal: true,  video: "video-mediodia" }, // 12:00 – 15:59 V-S-D-feriados
-  tarde:     { mostrarPrincipal: false, video: "video-cafe"     }, // 16:00 – 19:59
-  cena:      { mostrarPrincipal: true,  video: "video-cena"     }, // 20:00+
+  manana:    { mostrarPrincipal: false, video: "video-cafe"     },
+  ejecutivo: { mostrarPrincipal: true,  video: "video-mediodia" },
+  carta:     { mostrarPrincipal: true,  video: "video-mediodia" },
+  tarde:     { mostrarPrincipal: false, video: "video-cafe"     },
+  cena:      { mostrarPrincipal: true,  video: "video-cena"     },
 };
 
 // ── ÍCONOS DEL ACORDEÓN POR TURNO ───────────
@@ -33,7 +33,7 @@ const ICONOS = {
   ejecutivo: { cafe: "ti-coffee", ejecutivo: "ti-bowl-spoon", carta: "ti-tools-kitchen-2", bebidas: "ti-glass-full" },
   carta:     { cafe: "ti-coffee", ejecutivo: "ti-bowl-spoon", carta: "ti-tools-kitchen-2", bebidas: "ti-glass-full" },
   tarde:     { cafe: "ti-coffee", ejecutivo: "ti-bowl-spoon", carta: "ti-tools-kitchen-2", bebidas: "ti-glass-full" },
-  cena:      { cafe: "ti-coffee", ejecutivo: "ti-bowl-spoon", carta: "ti-tools-kitchen-2",        bebidas: "ti-glass-full"    },
+  cena:      { cafe: "ti-coffee", ejecutivo: "ti-bowl-spoon", carta: "ti-tools-kitchen-2", bebidas: "ti-glass-full" },
 };
 
 // ── PALETA DE COLORES POR TURNO ──────────────
@@ -100,38 +100,14 @@ function getTurno() {
   const hora          = horaDecimal(ahora);
   const diaSemana     = ahora.getDay();
   const esFeriado     = FERIADOS.includes(fechaStr(ahora));
-  const esFinDeSemana = diaSemana === 0 || diaSemana === 6; // Dom/Sab
+  const esFinDeSemana = diaSemana === 0 || diaSemana === 6;
   const esViernes     = diaSemana === 5;
 
-  // Mañana: 06:00 – 11:59
-  if (hora >= 6 && hora < 12) return "manana";
-
-  // Almuerzo: 12:00 – 15:59
-  if (hora >= 12 && hora < 16) {
-    if (esFinDeSemana || esViernes || esFeriado) return "carta";
-    return "ejecutivo"; // L-J
-  }
-
-  // Tarde: 16:00 – 19:59 → siempre café
+  if (hora >= 6  && hora < 12) return "manana";
+  if (hora >= 12 && hora < 16) return (esFinDeSemana || esViernes || esFeriado) ? "carta" : "ejecutivo";
   if (hora >= 16 && hora < 20) return "tarde";
-
-  // Noche: 20:00+ → siempre carta de comida
   return "cena";
 }
-
-// ── ACORDEONES: cerrar al abrir otro ────────
-document.addEventListener("DOMContentLoaded", () => {
-  const toggles = document.querySelectorAll(".checkbox__submenu");
-  toggles.forEach(toggle => {
-    toggle.addEventListener("change", () => {
-      if (toggle.checked) {
-        toggles.forEach(otro => {
-          if (otro !== toggle) otro.checked = false;
-        });
-      }
-    });
-  });
-});
 
 // ── APLICAR TURNO ────────────────────────────
 function aplicarTurno() {
@@ -178,7 +154,6 @@ function aplicarTurno() {
   items.forEach(item => item.classList.remove("activo", "proxima"));
   const mapaItem = { manana: 0, ejecutivo: 1, carta: 2, tarde: 0, cena: 2 };
   if (items[mapaItem[turno]]) items[mapaItem[turno]].classList.add("activo");
-  if (turno === "manana" && items[1]) items[1].classList.add("proxima");
 
   // 6. Paleta de colores
   const paleta = PALETAS[turno];
@@ -197,6 +172,40 @@ function aplicarTurno() {
 
 // ── INIT ─────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
+
+  // Acordeones: cerrar al abrir otro
+  const toggles = document.querySelectorAll(".checkbox__submenu");
+  toggles.forEach(toggle => {
+    toggle.addEventListener("change", () => {
+      if (toggle.checked) {
+        toggles.forEach(otro => {
+          if (otro !== toggle) otro.checked = false;
+        });
+      }
+    });
+  });
+
+  // Aplicar turno inicial
   aplicarTurno();
   setInterval(aplicarTurno, 60 * 1000);
+
+  // Observer carrusel: activar categoría al hacer scroll
+  const secciones = document.querySelectorAll('.carta-box[id], .carta-grid[id]');
+  const cards = document.querySelectorAll('.categoria-card');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        cards.forEach(c => c.classList.remove('active'));
+        const cardActiva = document.querySelector(`.categoria-card[href="#${id}"]`);
+        if (cardActiva) {
+          cardActiva.classList.add('active');
+          cardActiva.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      }
+    });
+  }, { threshold: 0.3 });
+
+  secciones.forEach(s => observer.observe(s));
 });
