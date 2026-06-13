@@ -33,7 +33,7 @@ const ICONOS = {
   ejecutivo: { cafe: "ti-coffee", ejecutivo: "ti-bowl-spoon", carta: "ti-tools-kitchen-2", bebidas: "ti-glass-full" },
   carta:     { cafe: "ti-coffee", ejecutivo: "ti-bowl-spoon", carta: "ti-tools-kitchen-2", bebidas: "ti-glass-full" },
   tarde:     { cafe: "ti-coffee", ejecutivo: "ti-bowl-spoon", carta: "ti-tools-kitchen-2", bebidas: "ti-glass-full" },
-  cena:      { cafe: "ti-coffee", ejecutivo: "ti-bowl-spoon", carta: "ti-notebook",        bebidas: "ti-glass-full"    },
+  cena:      { cafe: "ti-coffee", ejecutivo: "ti-bowl-spoon", carta: "ti-tools-kitchen-2",        bebidas: "ti-glass-full"    },
 };
 
 // ── PALETA DE COLORES POR TURNO ──────────────
